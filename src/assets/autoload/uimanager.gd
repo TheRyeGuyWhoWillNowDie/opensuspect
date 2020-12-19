@@ -9,13 +9,16 @@ var ui_list: Dictionary = {
 						"interactui": {"scene": preload("res://assets/ui/hud/interactui/interactui.tscn")},
 						"killui": {"scene": preload("res://assets/ui/hud/infiltrator_hud/infiltrator_hud.tscn")},
 						"rolescreen": {"scene": preload("res://assets/ui/hud/defaulthud/rolescreen/rolescreen.tscn")},
-						
+
 						#common UI
-						"pausemenu": {"scene": preload("res://assets/ui/pausemenu/pausemenu.tscn")}, 
-						"chatbox": {"scene": preload("res://assets/ui/lobbyui/chatbox/chatbox.tscn")},
+						"pausemenu": {"scene": preload("res://assets/ui/pausemenu/pausemenu.tscn")},
 						"keybind": {"scene": preload("res://assets/ui/submenus/settings/keybind/keybind.tscn")},
 						"appearance_editor": {"scene": preload("res://assets/ui/submenus/appearance_editor/appearance_editor.tscn")},
-						
+
+						#lobby UI
+						"chatbox": {"scene": preload("res://assets/ui/lobbyui/chatbox/chatbox.tscn")},
+						"voteui": {"scene": preload("res://assets/ui/lobbyui/voteui/voteui.tscn")},
+
 						#task UI
 						"clockset": {"scene": preload("res://assets/ui/tasks/clockset/clockset.tscn")}
 						}
@@ -126,12 +129,12 @@ func set_game_binds():#Set new binds
 		#Erases the key binds of previous action
 # warning-ignore:void_assignment
 		erase = InputMap.action_erase_events(key)
-		
+
 		if value != null:
 			var new_key = InputEventKey.new()
 			new_key.set_scancode(value)
 			InputMap.action_add_event(key, new_key)
-		
+
 	#print(keybinds)
 
 func write_config():
@@ -151,7 +154,7 @@ func write_keybinds():
 	configFile.set_value("Keybinds","ui_down",int(83))
 	configFile.set_value("Keybinds","ui_left",int(65))
 	configFile.set_value("Keybinds","ui_right",int(68))
-	
+
 	configFile.save(file)
 
 # warning-ignore:shadowed_variable
